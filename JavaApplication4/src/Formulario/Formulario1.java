@@ -435,7 +435,7 @@ public class Formulario1 extends javax.swing.JFrame {
            }
             
            //mostrando la cantidad de registros
-           jTextField3.setText(String.valueOf(fila));
+           jTextField2.setText(String.valueOf(fila1));
         }
        catch (Exception error3){
             JOptionPane.showMessageDialog(null, error3);
