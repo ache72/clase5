@@ -21,4 +21,18 @@ public class DaoConsulta {
     }
     return rs;
     }
-}
+    
+    public ResultSet consulta2(int numero_orden){
+        ResultSet rs=null;
+    try{
+        String sql = "select * from [order details] where orderid ='"+numero_orden+"'";
+        Statement stmt = null;
+        stmt = cn.xcon().createStatement();
+        rs = stmt.executeQuery(sql);
+    }catch(Exception error){
+        JOptionPane.showMessageDialog(null, error);
+    }
+    return rs;
+     }
+    }
+

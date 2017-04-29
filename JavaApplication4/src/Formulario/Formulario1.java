@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 public class Formulario1 extends javax.swing.JFrame {
 
     public static int fila=0;
+    public static int fila1=0;
     /**
      * Creates new form Formulario1
      */
@@ -186,10 +187,106 @@ public class Formulario1 extends javax.swing.JFrame {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "OrderID", "ProductID", "UnitPrice", "Quantify"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -322,8 +419,27 @@ public class Formulario1 extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
     int indice = jTable1.getSelectedRow();
     int numero_orden = Integer.parseInt(String.valueOf(jTable1.getValueAt(indice, 0)));
+    JOptionPane.showMessageDialog(null,numero_orden);
     
-    JOptionPane.showMessageDialog(null, numero_orden);
+    //creando una instancia
+        BEAN.BeanConsulta ins=new BEAN.BeanConsulta();
+        ResultSet rs2=null;
+        try{
+            rs2=ins.consulta2(numero_orden);
+            while(rs2.next()){
+            jTable2.setValueAt(rs2.getString(1),fila1,0);
+            jTable2.setValueAt(rs2.getString(2),fila1,1);    
+            jTable2.setValueAt(rs2.getString(3),fila1,2);    
+            jTable2.setValueAt(rs2.getString(4),fila1,3);
+            fila1++;
+           }
+            
+           //mostrando la cantidad de registros
+           jTextField3.setText(String.valueOf(fila));
+        }
+       catch (Exception error3){
+            JOptionPane.showMessageDialog(null, error3);
+        } 
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
